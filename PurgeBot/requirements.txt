@@ -1,0 +1,15 @@
+python-dotenv
+transformers
+python-telegram-bot
+torch
+requests
+scikit-learn
+joblib
+telethon 
+numpy 
+pandas 
+sentence-transformers 
+telegram
+torchvision
+speechbrain
+torchaudio
