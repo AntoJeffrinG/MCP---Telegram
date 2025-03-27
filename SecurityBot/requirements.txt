@@ -1,0 +1,10 @@
+requests
+python-telegram-bot
+transformers
+torch
+aiohttp
+aiogram
+requests
+logging
+python-telegram-bot
+
