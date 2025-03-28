@@ -6,16 +6,13 @@ from aiogram.filters import Command
 from aiogram.types import Message
 from aiogram.client.default import DefaultBotProperties
 
-TOKEN = "7275579353:AAER7dkooGN63a6FsNKU9_M7slknkf5ol78"  # Replace with your actual bot token
+TOKEN = "7275579353:AAER7dkooGN63a6FsNKU9_M7slknkf5ol78"
 
-# ✅ Corrected Bot Initialization for aiogram 3.7+
 bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 dp = Dispatcher()
 
-# Store keyword messages {chat_id: {keyword: message}}
 secret_messages = {}
 
-# ✅ /start command
 @dp.message(Command("start"))
 async def start_command(message: Message):
     if message.chat.type == ChatType.PRIVATE:
@@ -23,7 +20,6 @@ async def start_command(message: Message):
     else:
         await message.answer("🤖 Hello Group! Use /send_secret and keywords to trigger messages.")
 
-# ✅ /send_secret [keyword] [message] - Stores a secret message
 @dp.message(Command("send_secret"))
 async def send_secret_command(message: Message):
     args = message.text.split(maxsplit=2)
@@ -39,16 +35,13 @@ async def send_secret_command(message: Message):
 
     secret_messages[chat_id][keyword] = secret_msg
 
-    # ✅ Send confirmation privately to the user
     await bot.send_message(message.from_user.id, f"✅ Your secret message has been saved with the keyword: {keyword}.")
 
-    # ✅ Delete the user's original command (optional, to keep the chat clean)
     try:
         await message.delete()
     except Exception:
         pass
 
-# ✅ Detect keyword and send secret message
 @dp.message()
 async def detect_keywords(message: Message):
     chat_id = message.chat.id
@@ -60,7 +53,6 @@ async def detect_keywords(message: Message):
                 await message.answer(secret_msg)
                 break
 
-# ✅ Start bot
 async def main():
     logging.basicConfig(level=logging.INFO)
     await dp.start_polling(bot)
