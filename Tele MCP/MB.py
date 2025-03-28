@@ -4,15 +4,12 @@ from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKe
 from aiogram.filters import Command
 from aiogram.client.default import DefaultBotProperties
 
-# ✅ Replace with your actual bot token and admin ID
 BOT_TOKEN = "8101041284:AAFrV9x1PvCA4m6iepBk4iLACj-ZJcsPhVM"
-ADMIN_ID = 2034271211  # Replace with your actual Telegram ID
+ADMIN_ID = 2034271211
 
-# ✅ Initialize Bot and Dispatcher
 bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 dp = Dispatcher()
 
-# ✅ Security Questions for User Verification
 security_questions = {
     "What is 2 + 2?": "4",
     "What is the capital of France?": "Paris",
@@ -21,7 +18,6 @@ security_questions = {
 
 user_reputation = {}
 
-# ✅ Keyboards
 main_kb = ReplyKeyboardMarkup(
     keyboard=[[KeyboardButton(text="Request Chat Access")]],
     resize_keyboard=True
@@ -35,7 +31,6 @@ admin_kb = ReplyKeyboardMarkup(
     resize_keyboard=True
 )
 
-# ✅ /start Command Handler
 @dp.message(Command("start"))
 async def start_command(message: Message):
     keyboard = InlineKeyboardMarkup(
@@ -45,7 +40,6 @@ async def start_command(message: Message):
     )
     await message.answer("Welcome! Click the button below to request access.", reply_markup=keyboard)
 
-# ✅ Handle User Access Request
 @dp.callback_query(lambda c: c.data == "request_access")
 async def request_access(callback: CallbackQuery):
     question = list(security_questions.keys())[0]
@@ -53,14 +47,12 @@ async def request_access(callback: CallbackQuery):
     await callback.message.answer(f"🛡 Security Question:\n<b>{question}</b>", reply_markup=ReplyKeyboardRemove())
     await callback.answer()
 
-# ✅ Handle User Responses to Security Questions
 @dp.message()
 async def validate_answer(message: Message):
     user_id = message.from_user.id
     if user_id in user_reputation and "question" in user_reputation[user_id]:
         question = user_reputation[user_id]["question"]
         correct_answer = security_questions[question]
-
         if message.text.strip().lower() == correct_answer.lower():
             await message.answer("✅ Correct! You are now allowed to chat.", reply_markup=main_kb)
             del user_reputation[user_id]
@@ -72,7 +64,6 @@ async def validate_answer(message: Message):
             else:
                 await message.answer("❌ Incorrect. Try again.")
 
-# ✅ Admin Panel Access
 @dp.message(Command("admin"))
 async def admin_panel(message: Message):
     if message.from_user.id == ADMIN_ID:
@@ -80,7 +71,6 @@ async def admin_panel(message: Message):
     else:
         await message.answer("❌ You are not authorized to access this panel.")
 
-# ✅ Admin Commands
 @dp.message(lambda message: message.text == "View Users")
 async def view_users(message: Message):
     if message.from_user.id == ADMIN_ID:
@@ -91,7 +81,6 @@ async def view_users(message: Message):
 async def ban_user(message: Message):
     if message.from_user.id == ADMIN_ID:
         await message.answer("Send the User ID to ban.")
-
         @dp.message()
         async def ban_selected_user(msg: Message):
             try:
@@ -105,7 +94,6 @@ async def ban_user(message: Message):
 async def unban_user(message: Message):
     if message.from_user.id == ADMIN_ID:
         await message.answer("Send the User ID to unban.")
-
         @dp.message()
         async def unban_selected_user(msg: Message):
             try:
@@ -120,7 +108,6 @@ async def exit_admin_panel(message: Message):
     if message.from_user.id == ADMIN_ID:
         await message.answer("🔙 Exited Admin Panel.", reply_markup=main_kb)
 
-# ✅ Run the Bot
 async def main():
     print("🤖 Bot is running...")
     await dp.start_polling(bot)
