@@ -4,8 +4,8 @@ import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.utils import executor
 
-TELEGRAM_BOT_TOKEN = "8081022784:AAEFOH7KMxCQJOik0oMr95vUqEs2oUWC8Gw"
-RAPIDAPI_KEY = "fa49d03b99mshb9b1176d92d30dfp1e013ajsn276dc79afd9b"
+TELEGRAM_BOT_TOKEN = "bot_token"
+RAPIDAPI_KEY = "api_key"
 
 bot = Bot(token=TELEGRAM_BOT_TOKEN)
 dp = Dispatcher(bot)
