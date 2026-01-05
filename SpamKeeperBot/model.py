@@ -46,7 +46,7 @@ async def start(update: Update, context: CallbackContext):
     await update.message.reply_text("Hello! I'm a spam detection bot. I'll remove spam messages and warn users.")
 
 def main():
-    TOKEN = "7738885490:AAHcfaS4I404PYaNPRh_4GNUdry-Fx9q8xs"
+    TOKEN = "Tokenhere"
     app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, warn_user))
