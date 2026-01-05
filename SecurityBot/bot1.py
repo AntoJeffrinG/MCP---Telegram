@@ -3,7 +3,7 @@ from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, CallbackContext
 
 # Replace this with your actual bot token from BotFather
-TOKEN = "7610781631:AAEcq8UXmGxmQJPNEWYz8gih9V4cSmclcgE"
+TOKEN = "BotTOkenHere"
 
 # Define response logic
 async def check_url(update: Update, context: CallbackContext):
