@@ -47,7 +47,7 @@ async def start(update: Update, context: CallbackContext):
 
 def main():
     """Main function to start the bot."""
-    TOKEN = "7738885490:AAHcfaS4I404PYaNPRh_4GNUdry-Fx9q8xs"  # Replace with your bot token
+    TOKEN = "Bot Token Here"  # Replace with your bot token
     app = Application.builder().token(TOKEN).build()
 
     # Command handlers
