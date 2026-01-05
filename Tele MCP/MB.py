@@ -4,7 +4,7 @@ from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKe
 from aiogram.filters import Command
 from aiogram.client.default import DefaultBotProperties
 
-BOT_TOKEN = "8101041284:AAFrV9x1PvCA4m6iepBk4iLACj-ZJcsPhVM"
+BOT_TOKEN = "Bottoken here"
 ADMIN_ID = 2034271211
 
 bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
@@ -114,3 +114,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
