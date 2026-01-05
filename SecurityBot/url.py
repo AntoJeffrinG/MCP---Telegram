@@ -6,7 +6,7 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 from transformers import pipeline
 
 
-API_KEY = "294d0056ec536a7e173b5d341300bb39c454d70706179c0d75cfaef8256b08f7"
+API_KEY = "apikey here"
 BASE_URL = "https://www.virustotal.com/api/v3/urls/"
 
 
