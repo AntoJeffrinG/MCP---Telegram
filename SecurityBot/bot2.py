@@ -2,7 +2,7 @@ from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, CallbackContext
 
 # Replace this with your actual bot token from BotFather
-TOKEN = "8081022784:AAEFOH7KMxCQJOik0oMr95vUqEs2oUWC8Gw"
+TOKEN = "Bot TOken HEre"
 
 # Define fake news dictionary
 fake_news_samples = {
