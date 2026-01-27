@@ -95,6 +95,3 @@ Copy
 - Auto-scales during attack waves 
 
 ---
-  style A fill:#ff6b6b,color:#fff
-  style B fill:#4ecdc4,color:#000 
-  style C fill:#1a535c,color:#fff
