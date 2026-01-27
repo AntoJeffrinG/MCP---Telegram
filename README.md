@@ -95,20 +95,6 @@ Copy
 - Auto-scales during attack waves 
 
 ---
-
-## 🚧 Implementation Roadmap  
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffd8d8', 'edgeLabelBackground':'#fff'}}}%%
-graph LR
-  A["Current Phase
-  🛠️ Middleware Bot
-  (Telegram API)"] --> B["Phase 2
-  🔄 Proxy Protocol
-  (Custom MTProto)"]
-  B --> C["Final Goal
-  ⚡ Direct Integration
-  (Native Support)"]
-  
   style A fill:#ff6b6b,color:#fff
   style B fill:#4ecdc4,color:#000 
   style C fill:#1a535c,color:#fff
